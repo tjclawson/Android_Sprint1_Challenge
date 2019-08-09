@@ -33,12 +33,13 @@ class MovieDetail : AppCompatActivity() {
             finish()
         } //this now does samething as save button, do I need to change in this activity or list activity?
 
-        switch_watched.setOnCheckedChangeListener{switch_watched, isChecked ->
+        switch_watched.setOnCheckedChangeListener{buttonView, isChecked ->
             if (isChecked){
                 watched = true
             } else {
                 watched = false
             }
+
         }
 
 
@@ -62,11 +63,12 @@ class MovieDetail : AppCompatActivity() {
 
 
     fun createMovie(): Movie {
-        var newMovie = Movie(edittext_movie_title.text.toString(), watched) //here I want to pass in the value set by the onClick
-        return newMovie
-    }
+        var newMovie = Movie(edittext_movie_title.text.toString(), watched) //watched value is passing successfully, but because it is passing it to the
+        return newMovie                                                     //function, when that function is called in the intent, it then passes it to
+    }                                                                       //all movies in list, do I need to make a separate intent?
 
 
 }
 
+//need to add onBackPressed to keep from crashing
 

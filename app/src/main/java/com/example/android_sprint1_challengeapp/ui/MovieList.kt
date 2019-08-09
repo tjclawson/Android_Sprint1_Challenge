@@ -18,6 +18,7 @@ class MovieList : AppCompatActivity() {
 
     companion object {
         const val REQUEST_CODE_MOVIE = 1 //this object is our key for the key value pair
+        const val REQUEST_CODE_WATCHED = 1
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,8 +48,8 @@ class MovieList : AppCompatActivity() {
         newMovieView.textSize = 22f
         newMovieView.id = index
         newMovieView.text = movie.title
-        if(watched == true){                        //this is changing the color, but it's changing the color for all textviews
-            newMovieView.setTextColor(Color.RED)
+        if(movieList[index].watched == true){                        //this is changing the color, but it's changing the color for all textviews, and once changed it won't
+            newMovieView.setTextColor(Color.RED)    //does not change back
         } else {
             newMovieView.setTextColor(Color.BLACK)
         }
@@ -73,5 +74,7 @@ class MovieList : AppCompatActivity() {
 
 
     }
+
+
 
 }

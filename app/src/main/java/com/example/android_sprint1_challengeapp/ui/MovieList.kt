@@ -9,6 +9,7 @@ import android.os.Bundle
 import android.widget.TextView
 import com.example.android_sprint1_challengeapp.Model.Movie
 import com.example.android_sprint1_challengeapp.R
+import com.example.android_sprint1_challengeapp.ui.MovieDetail.Companion.watched
 import kotlinx.android.synthetic.main.activity_movie_list.*
 
 class MovieList : AppCompatActivity() {
@@ -46,6 +47,11 @@ class MovieList : AppCompatActivity() {
         newMovieView.textSize = 22f
         newMovieView.id = index
         newMovieView.text = movie.title
+        if(watched == true){                        //this is changing the color, but it's changing the color for all textviews
+            newMovieView.setTextColor(Color.RED)
+        } else {
+            newMovieView.setTextColor(Color.BLACK)
+        }
 
         newMovieView.setOnClickListener{
             var textViewIntent = Intent(this, MovieDetail::class.java)

@@ -35,8 +35,8 @@
             android:layout_height="wrap_content"
             app:layout_constraintRight_toRightOf="@id/button_delete_movie"/>
 
-    <Button
-            android:id="@+id/button_watched"
+    <Switch
+            android:id="@+id/switch_watched"
             android:text="Watched"
             app:layout_constraintTop_toBottomOf="@id/edittext_movie_title"
             android:layout_width="match_parent"

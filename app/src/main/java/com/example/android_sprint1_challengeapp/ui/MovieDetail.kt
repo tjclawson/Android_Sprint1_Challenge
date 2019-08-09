@@ -11,6 +11,10 @@ import kotlinx.android.synthetic.main.activity_movie_detail.*
 
 class MovieDetail : AppCompatActivity() {
 
+    companion object {
+        var watched = false
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_movie_detail)
@@ -29,10 +33,14 @@ class MovieDetail : AppCompatActivity() {
             finish()
         } //this now does samething as save button, do I need to change in this activity or list activity?
 
-       /* button_watched.setOnClickListener {
-            movie.watched =
-                true                //just want this to set the movie.watched to true, not sure why it is unresolved
-        }*/
+        switch_watched.setOnCheckedChangeListener{switch_watched, isChecked ->
+            if (isChecked){
+                watched = true
+            } else {
+                watched = false
+            }
+        }
+
 
 
 
@@ -44,22 +52,17 @@ class MovieDetail : AppCompatActivity() {
 
 
 
-
-
-
-
     }
 
     fun loadMovie(movie: Movie) {
         edittext_movie_title.setText(movie.title)
-        edittext_movie_title.setTextColor(RED)
 
     }
 
 
 
     fun createMovie(): Movie {
-        var newMovie = Movie(edittext_movie_title.text.toString(), watched = true) //here I want to pass in the value set by the onClick
+        var newMovie = Movie(edittext_movie_title.text.toString(), watched) //here I want to pass in the value set by the onClick
         return newMovie
     }
 

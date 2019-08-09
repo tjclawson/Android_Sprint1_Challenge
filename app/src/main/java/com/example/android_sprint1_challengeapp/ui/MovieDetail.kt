@@ -2,6 +2,7 @@ package com.example.android_sprint1_challengeapp.ui
 
 import android.app.Activity
 import android.content.Intent
+import android.graphics.Color.RED
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.android_sprint1_challengeapp.Model.Movie
@@ -22,8 +23,9 @@ class MovieDetail : AppCompatActivity() {
         }
 
         button_watched.setOnClickListener {
-
+            edittext_movie_title.movie.watched = true                //just want this to set the movie.watched to true, not sure why it is unresolved
         }
+
 
 
 
@@ -39,12 +41,14 @@ class MovieDetail : AppCompatActivity() {
 
     fun loadMovie(movie: Movie) {
         edittext_movie_title.setText(movie.title)
+        edittext_movie_title.setTextColor(RED)
 
     }
 
 
+
     fun createMovie(): Movie {
-        var newMovie = Movie(edittext_movie_title.text.toString())
+        var newMovie = Movie(edittext_movie_title.text.toString(), movie.watched) //here I want to pass in the value set by the onClick
         return newMovie
     }
 

@@ -2,6 +2,8 @@ package com.example.android_sprint1_challengeapp.ui
 
 import android.app.Activity
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.Color.RED
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
@@ -44,6 +46,7 @@ class MovieList : AppCompatActivity() {
         newMovieView.textSize = 22f
         newMovieView.id = index
         newMovieView.text = movie.title
+        newMovieView.setBackgroundColor(RED)
 
         newMovieView.setOnClickListener{
             var textViewIntent = Intent(this, MovieDetail::class.java)
@@ -60,4 +63,6 @@ class MovieList : AppCompatActivity() {
             movieList.add(newResultMovie)
         }
     }
+
+
 }

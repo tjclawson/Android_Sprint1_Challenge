@@ -2,4 +2,4 @@ package com.example.android_sprint1_challengeapp.Model
 
 import java.io.Serializable
 
-class Movie(var title: String):Serializable
+class Movie(var title: String, watched: Boolean):Serializable

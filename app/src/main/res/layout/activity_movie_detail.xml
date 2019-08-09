@@ -10,6 +10,7 @@
     <EditText
             android:id="@+id/edittext_movie_title"
             android:hint="Movie Title"
+            android:backgroundTint="@android:color/background_dark"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_width="match_parent"

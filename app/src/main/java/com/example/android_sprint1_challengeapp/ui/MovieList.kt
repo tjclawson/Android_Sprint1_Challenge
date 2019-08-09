@@ -46,7 +46,6 @@ class MovieList : AppCompatActivity() {
         newMovieView.textSize = 22f
         newMovieView.id = index
         newMovieView.text = movie.title
-        newMovieView.setBackgroundColor(RED)
 
         newMovieView.setOnClickListener{
             var textViewIntent = Intent(this, MovieDetail::class.java)
@@ -57,12 +56,16 @@ class MovieList : AppCompatActivity() {
         return newMovieView
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        if (requestCode == REQUEST_CODE_MOVIE && resultCode == Activity.RESULT_OK) {
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) { //would I just need to edit this to include delete case?
+        if (requestCode == REQUEST_CODE_MOVIE && resultCode == Activity.RESULT_OK) {  // that's what I did, not sure if it's a hack or not, but it works
             val newResultMovie = data?.getSerializableExtra("movie") as Movie
             movieList.add(newResultMovie)
+        } else {
+            val newResultMovie = data?.getSerializableExtra("movie") as Movie
+            movieList.remove(newResultMovie)
         }
-    }
 
+
+    }
 
 }

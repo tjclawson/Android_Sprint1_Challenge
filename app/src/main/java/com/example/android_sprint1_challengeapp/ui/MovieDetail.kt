@@ -22,9 +22,17 @@ class MovieDetail : AppCompatActivity() {
             finish()
         }
 
-        button_watched.setOnClickListener {
-            edittext_movie_title.movie.watched = true                //just want this to set the movie.watched to true, not sure why it is unresolved
-        }
+        button_delete_movie.setOnClickListener {   //use this listener and intent to remove movie on list activity
+            var intentDeleteMovie = Intent()
+            intentDeleteMovie.putExtra("movie", createMovie())
+            setResult(Activity.RESULT_CANCELED, intentDeleteMovie)
+            finish()
+        } //this now does samething as save button, do I need to change in this activity or list activity?
+
+       /* button_watched.setOnClickListener {
+            movie.watched =
+                true                //just want this to set the movie.watched to true, not sure why it is unresolved
+        }*/
 
 
 
@@ -33,6 +41,9 @@ class MovieDetail : AppCompatActivity() {
         if(bundle != null) {
             loadMovie(bundle!!.getSerializable("textViewMovie") as Movie)
         }
+
+
+
 
 
 
@@ -48,9 +59,11 @@ class MovieDetail : AppCompatActivity() {
 
 
     fun createMovie(): Movie {
-        var newMovie = Movie(edittext_movie_title.text.toString(), movie.watched) //here I want to pass in the value set by the onClick
+        var newMovie = Movie(edittext_movie_title.text.toString(), watched = true) //here I want to pass in the value set by the onClick
         return newMovie
     }
 
 
 }
+
+
